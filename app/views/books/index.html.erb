@@ -9,6 +9,7 @@
     </div>
     <div class="col-lg-8">
       <table class="table table-striped">
+        <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(10,10) %></p>
         <p>Title</p>
         <span><%= book.title %></span>
         <p>Opinion</p>
