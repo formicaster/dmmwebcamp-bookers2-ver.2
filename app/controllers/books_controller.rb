@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to book_pathの一覧ページへのパス
+    redirect_to book_path
   end
 
   private
