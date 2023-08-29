@@ -3,7 +3,7 @@
   <%= image_tag @user.get_profile_image(100,100) %>
 </div>
 
-<% @book.each do |post_image| %>
+<% @books.each do |post_image| %>
 <div>
   <%= link_to book_path(book.id) do %>
     <%= image_tag book.get_image %>
