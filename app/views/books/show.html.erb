@@ -1,2 +1,15 @@
 <h1>Books#show</h1>
 <p>Find me in app/views/books/show.html.erb</p>
+
+<h2>タイトル</h2>
+<p><%= @book.title %></p>
+
+<h2>本文</h2>
+<p><%= @book.body %></p>
+<h2>画像</h2>
+<% if @book.image.attached? %>
+  <%= image_tag @book.image, size: "300x300" %>
+<% else %>
+  <%= image_tag 'no_image', size: "300x300" %>
+<% end %>
+<%= link_to "編集", edit_book_path(@book.id) %>

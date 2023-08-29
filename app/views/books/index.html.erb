@@ -1,8 +1,27 @@
-<h1>投稿一覧</h1>
+<h1>投稿一覧New book</h1>
 
-<% @books.each do |list| %>
+<% @books.each do |book| %>
 
-  <p>タイトル</p>
-  <span><%= book.title %></span>
-  
+<div class="container">
+  <div class="row"> 
+    <div class="col-lg-4" style="background-color: orange;">
+      <h2>サイドバー</h2>
+    </div>
+    <div class="col-lg-8">
+      <table class="table table-striped">
+        <p>Title</p>
+        <span><%= book.title %></span>
+        <p>Opinion</p>
+        <span><%= book.body %></span>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <p>画像</p>
+  <% if book.image.attached? %>
+    <%= book_tag book.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
 <% end %>
