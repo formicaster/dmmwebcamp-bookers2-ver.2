@@ -7,8 +7,8 @@
 
 <% @books.each do |post_image| %>
 <div>
-  <%= link_to book_path(book.id) do %>
-    <%= image_tag book.get_image %>
+  <%= link_to book_path(post_image.id) do %>
+    <%= image_tag post_image.get_image %>
   <% end %>
   <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
   <p>ショップ名：<%= book.shop_name %></p>
