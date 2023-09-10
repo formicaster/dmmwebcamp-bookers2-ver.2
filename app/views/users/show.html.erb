@@ -1,13 +1,26 @@
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-  <% if @user == current_user %>
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %></div>
+<main>
+  <p id="notice"></p>
+    <div class='container px-5 px-sm-0'>
+      <div class='row'>
 
-<% @books.each do |post_image| %>
-<div>
-  <%= link_to book_path(post_image.id) do %>
-  <% end %>
-</div>
-<% end %>
+        <%= render 'books/list', books: @books %>
+
+        <div class='col-md-8 offset-md-1'>
+          <h2>Books</h2>
+            <table class='table table-hover table-inverse'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th>Opinion</th>
+                <th colspan="3"></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+        </div>
+
+      </div>
+    </div>
+</main>
