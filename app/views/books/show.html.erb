@@ -1,3 +1,38 @@
+<main>
+  <p id="notice"></p>
+    <div class='container'>
+      <div class='row'>
+
+        <%= render 'books/list', books: @books %>
+
+        <div class='col-md-8 offset-md-1'>
+          <h2>Book detail</h2>
+  		      <table class='table'>
+  		        <tr>
+                <td><a href="<%= user_path(current_user) %>">
+                        <% if @book.image.attached? %>
+                          <%= image_tag @book.image, size: "100x100" %>
+                        <% else %>
+                          <%= image_tag 'default-image', size: "100x100" %>
+                        <% end %>
+                      <%= @book.user.name %>
+                    </a>
+                </td>
+                <td><a href="/books/100973">test2</a></td>
+                <td>afr</td>
+                <td><a class="btn btn-sm btn-success edit_book_100973" href="/books/100973/edit">Edit</a></td>
+                <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_100973" rel="nofollow" data-method="delete" href="/books/100973">Destroy</a></td>
+              </tr>
+            </table>
+        </div>
+
+      </div>
+    </div>
+</main>
+
+
+
+
 <h1>Books#show</h1>
 <p>Find me in app/views/books/show.html.erb</p>
 
@@ -21,16 +56,3 @@
     <%= link_to "削除", book_path(@book), method: :delete %>
 <% end %>
 
-<main>
-  <p id="notice"></p>
-    <div class='container'>
-      <div class='row'>
-
-        <%= render 'books/list', books: @books %>
-
-        <div class='col-md-8 offset-md-1'>
-        </div>
-
-      </div>
-    </div>
-</main>
