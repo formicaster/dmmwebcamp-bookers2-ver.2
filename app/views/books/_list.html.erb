@@ -1,11 +1,18 @@
 <div class='col-md-3'>
           <h2>User info</h2>
             <table class='table'>
+              <% if @user.present? %>
               <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
               <tr>
 	              <th>name</th>
 	              <th><%= @user.name %></th>
               </tr>
+              <% else %>
+              <tr>
+                <th>name</th>
+                <th>User not found</th>
+              </tr>
+              <% end %>
               <tr>
 	              <th>introduction</th>
 	              <th></th>
