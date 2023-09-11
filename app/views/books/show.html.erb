@@ -1,5 +1,5 @@
 <main>
-  <p id="notice"></p>
+  <p id="notice"><%= flash[:notice] %></p>
     <div class='container'>
       <div class='row'>
 
@@ -9,7 +9,7 @@
           <h2>Book detail</h2>
   		      <table class='table'>
   		        <tr>
-                <td><a href="<%= user_path(current_user) %>">
+                <td><a href="<%= user_path(@book.user) %>">
                         <% if @book.image.attached? %>
                           <%= image_tag @book.image, size: "100x100" %>
                         <% else %>
@@ -18,10 +18,10 @@
                       <%= @book.user.name %>
                     </a>
                 </td>
-                <td><a href="/books/100973">test2</a></td>
-                <td>afr</td>
-                <td><a class="btn btn-sm btn-success edit_book_100973" href="/books/100973/edit">Edit</a></td>
-                <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_100973" rel="nofollow" data-method="delete" href="/books/100973">Destroy</a></td>
+                <td><%= @book.title %></td>
+                <td><%= @book.body %></td>
+                <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+                <td><%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %></td>
               </tr>
             </table>
         </div>
@@ -29,30 +29,3 @@
       </div>
     </div>
 </main>
-
-
-
-
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
-
-<p>投稿ユーザー画像：<%= image_tag @book.user.get_profile_image(100,100) %></p>
-<p>ユーザーネーム：<%= @book.user.name %></p>
-
-<h2>タイトル</h2>
-<p><%= @book.title %></p>
-
-<h2>本文</h2>
-<p><%= @book.body %></p>
-<h2>画像</h2>
-<% if @book.image.attached? %>
-  <%= image_tag @book.image, size: "300x300" %>
-<% else %>
-  <%= image_tag 'no_image', size: "300x300" %>
-<% end %>
-<%= link_to "編集", edit_book_path(@book.id) %>
-
-<% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-<% end %>
-
