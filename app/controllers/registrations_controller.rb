@@ -7,7 +7,8 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:notice] = 'Welcome! You have signed up successfully.'
-      redirect_to user_path(current_user)
+      sign_in(@user)
+      redirect_to user_path(@user)
     else
       render 'new'
     end
