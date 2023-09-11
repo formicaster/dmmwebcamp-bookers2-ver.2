@@ -1,15 +1,27 @@
-<h1>Editing Book</h1>
-<%= form_with model: @book, url: update_book_path(@book.id), method: :patch do |f| %>
+<main>
+  <p id="notice"><%= flash[:notice] %></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+        <h1>Editing Book</h1>
 
-  <h4>Title</h4>
-  <%= f.text_field :title %>
+        <%= form_with(model: @book, local: true) do |form| %>
+          <div class="form-group">
+            <%= form.label :title %>
+            <%= form.text_field :title, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= form.label :body %>
+            <%= form.text_area :body, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= form.submit "Update Book", class: "btn btn-success" %>
+          </div>
+        <% end %>
 
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-
-  <%= f.submit 'Update Book' %>
-
-  <%= link_to "Show", show_book_path(@book.id) %>
-  |
-
-<% end %>
+        <%= link_to "Show", @book, class: "book_#{@book.id}" %> |
+        <%= link_to "Back", books_path, class: "back" %>
+      </div>
+    </div>
+  </div>
+</main>
