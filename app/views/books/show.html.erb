@@ -3,33 +3,28 @@
     <div class='container'>
       <div class='row'>
 
-        <%= render 'books/list', books: @books %>
+        <%= render 'books/list', book: @newbook, user: @book.user %>
 
         <div class='col-md-8 offset-md-1'>
           <h2>Book detail</h2>
   		      <table class='table'>
   		        <tr>
-                <td><a href="<%= user_path(@book.user) %>">
-                        <% if @book.user.profile_image.attached? %>
-                          <%= image_tag @book.user.get_profile_image(100, 100), size: "100x100" %>
-                        <% else %>
-                          <%= image_tag 'default-image.jpg', size: "100x100" %>
-                        <% end %>
-                      <%= @book.user.name %>
-                    </a>
+                <td>
+                  <%= link_to user_path(@book.user) do %>
+                  <%= image_tag @book.user.get_profile_image(100,100)%><br>
+                  <%= @book.user.name %>
+                  <% end %>
                 </td>
-                <td><%= @book.title %></td>
+                <td>
+                  <%= link_to book_path do %>
+                  <%= @book.title %>
+                  <% end %>
+                </td>
                 <td><%= @book.body %></td>
-                <td>
-                  <% if user_signed_in? && @book.user == current_user %>
-                    <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
-                  <% end %>
-                </td>
-                <td>
-                  <% if user_signed_in? && @book.user == current_user %>
-                    <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %>
-                  <% end %>
-                </td>
+                <% if @book.user == current_user %>
+                <td><%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success" %></td>
+                <td><%= link_to "Destroy", book_path(@book), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+                <% end %>
               </tr>
             </table>
         </div>
