@@ -3,7 +3,8 @@
     <div class='container px-5 px-sm-0'>
       <div class='row'>
 
-        <%= render 'books/list', books: @books %>
+        <%= render partial: 'books/list', locals: { user: current_user, book: @book } %>
+
 
         <div class='col-md-8 offset-md-1'>
           <h2>Users</h2>
