@@ -1,47 +1,46 @@
 <div class='col-md-3'>
-          <h2>User info</h2>
-            <table class='table'>
-              <% if @user.present? %>
-              <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
-              <tr>
-	              <th>name</th>
-	              <th><%= @user.name %></th>
-              </tr>
-              <tr>
-                <th>introduction</th>
-                <th><%= @user.introduction %></th>
-              </tr>
-              <% else %>
-              <tr>
-                <th>name</th>
-                <th><%= @user.present? ? @user.name : 'User not found' %></th>
-              </tr>
-              <tr>
-                <th>introduction</th>
-                <th><%= @user.present? ? @user.introduction : 'Introduction not found' %></th>
-              </tr>
-              <% end %>
-            </table>
+  <h2>User info</h2>
+  <table class='table'>
+    <% if @user.present? %>
+      <tr><%= image_tag @user.get_profile_image(100, 100) %></tr>
+      <tr>
+        <th>name</th>
+        <th><%= @user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.introduction %></th>
+      </tr>
+    <% else %>
+      <tr>
+        <th>name</th>
+        <th><%= @user.present? ? @user.name : 'User not found' %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @user.present? ? @user.introduction : 'Introduction not found' %></th>
+      </tr>
+    <% end %>
+  </table>
 
-          <div class='row'>
-            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
-              <i class="fas fa-user-cog"></i>
-            <% end %>
-          </div>
+  <div class='row'>
+    <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+    <% end %>
+  </div>
 
-          <h2 class="mt-3">New book</h2>
-            <form action="/books" accept-charset="UTF-8" method="post">
-              <%= csrf_meta_tags %>
-                <div class="form-group">
-                  <label for="book_title">Title</label>
-                  <input class="form-control book_title" type="text" name="book[title]" id="book_title" />
-                </div>
-                <div class="form-group">
-                  <label for="book_opinion">Opinion</label>
-                  <textarea class="form-control book_body" name="book[body]" id="book_body"></textarea>
-                </div>
-                <div class="form-group">
-                  <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book" />
-                </div>
-            </form>
-        </div>
+  <h2 class="mt-3">New book</h2>
+  <%= form_with(model: Book.new, local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :title, "Title" %>
+      <%= form.text_field :title, class: "form-control book_title" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :body, "Opinion" %>
+      <%= form.text_area :body, class: "form-control book_body" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Create Book", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
