@@ -1,0 +1,26 @@
+
+While loading ./spec/models/book_comment_spec.rb an `exit` / `raise SystemExit` occurred, RSpec will now quit.
+[31mFailure/Error: exit 1[0m
+[31m[0m
+[31mSystemExit:[0m
+[31m  exit[0m
+[36m# ./spec/rails_helper.rb:31:in `exit'[0m
+[36m# ./spec/rails_helper.rb:31:in `rescue in <top (required)>'[0m
+[36m# ./spec/rails_helper.rb:27:in `<top (required)>'[0m
+[36m# ./spec/models/book_comment_spec.rb:1:in `require'[0m
+[36m# ./spec/models/book_comment_spec.rb:1:in `<top (required)>'[0m
+[36m# ------------------[0m
+[36m# --- Caused by: ---[0m
+[36m# ActiveRecord::PendingMigrationError:[0m
+[36m#   [0m
+[36m#   [0m
+[36m#   Migrations are pending. To resolve this issue, run:[0m
+[36m#   [0m
+[36m#           bin/rails db:migrate RAILS_ENV=test[0m
+[36m#   [0m
+[36m#   You have 3 pending migrations:[0m
+[36m#   [0m
+[36m#   20230913075407_add_book_id_to_favorites.rb[0m
+[36m#   20230913101119_create_book_comments.rb[0m
+[36m#   20230913130100_add_book_id_to_book_comments.rb[0m
+[36m#   /home/ec2-user/.rvm/gems/ruby-3.1.2/gems/activerecord-6.1.7.6/lib/active_record/migration.rb:625:in `check_pending!'[0m
